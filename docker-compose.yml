@@ -1,0 +1,30 @@
+version: '3'
+services:
+  products:
+    build: ./products-service
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongodb
+  orders:
+    build: ./orders-service
+    ports:
+      - '3001:3001'
+    depends_on:
+      - mongodb
+  users:
+    build: ./users-service
+    ports:
+      - '3002:3002'
+    depends_on:
+      - mongodb
+  payment:
+    build: ./payment-service
+    ports:
+      - '3003:3003'
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
